@@ -14,35 +14,27 @@ class PostList extends Component {
     .then(r => r.json())
     .then(data => {
       this.setState({posts: data})
-      console.log('data from the fetch', data);
     })
   }
 
   render() {
-    //  <Route
-    //   path='/postlist/:postID'
-    //
-    //   render={ ({match}) => {
-    //     const blogs = blogs.find((blog) =>{
-    //       return blog._id === match.params.id
-    //     })
-    //     return <ShowPost key={blog._id} name={blog.name} title={blog.title} blog={blog.blog}/>
-    //   }}
-    // />
-    console.log('logging match', this.match);
     return (
-      <div>
-        {this.state.posts.map((entries) => {
-          return(
-            <div key={entries._id}>
-              <Link to={`/postlist/${entries._id}`}> <h3>{entries.title}</h3> </Link>
-              <p>{entries.name}</p>
-              <p>{entries.blog}</p>
-              <hr />
-            </div>
-          )
-        })}
-
+      <div className='container'>
+        <div className="row">
+            {this.state.posts.map((entries) => {
+              return(
+                <div className="col-sm-6">
+                <div className="card" key={entries._id}>
+                  <div className="card-block">
+                    <Link to={`/postlist/${entries._id}`}><h4 className="card-title">{entries.title}</h4></Link>
+                    <h6 className="card-subtitle mb-2 text-muted">{entries.name}</h6>
+                    <p className="card-text">{entries.blog}</p>
+                  </div>
+                </div>
+              </div>
+              )
+            })}
+        </div>
       </div>
     );
   }

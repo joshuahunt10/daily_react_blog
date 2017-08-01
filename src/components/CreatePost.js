@@ -9,7 +9,6 @@ class CreatePost extends Component {
       title: '',
       blog: '',
       submitted: false
-
     }
     this.handleAuthor = this.handleAuthor.bind(this)
     this.handleTitle = this.handleTitle.bind(this)
@@ -46,14 +45,16 @@ class CreatePost extends Component {
       console.log(r, 'yay');
     }).catch(err => {
       console.log('boo this is the error:', err);
+    }).then(()=> {
+      this.setState({
+        name: '',
+        title: '',
+        blog: '',
+        submitted: true
+      })
+
     })
 
-    this.setState({
-      name: '',
-      title: '',
-      blog: '',
-      submitted: true
-    })
   }
 
   render() {
@@ -62,18 +63,23 @@ class CreatePost extends Component {
     }
 
     return (
-      <div>
+      <div className='container'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Author</label>
-          <input type="text" name="author" onChange={this.handleAuthor} value={this.state.name}/>
+          <div class="form-group">
+            <label htmlFor="name">Author</label>
+            <input type="text" className="form-control" id="name" placeholder="Enter name" name="author" onChange={this.handleAuthor} value={this.state.name} />
+          </div>
+          <div class="form-group">
+            <label htmlFor="title">Title</label>
+            <input type="text" className="form-control" id="title" placeholder="Enter name" name="title" onChange={this.handleTitle} value={this.state.title} />
+          </div>
+          <div class="form-group">
+            <label htmlFor="blog">Share Thoughts</label>
+            <textarea className="form-control" id="blog" rows="5" onChange={this.handleText} value={this.state.blog}></textarea>
+          </div>
 
-          <label htmlFor="title">Title</label>
-          <input type="text" name="title" onChange={this.handleTitle} value={this.state.title}/>
 
-          <label htmlFor='blog'>Say what ya mean</label>
-          <textarea name="blog" onChange={this.handleText} value={this.state.blog}></textarea>
-
-          <button type='submit'>Submit</button>
+          <button type='submit' className="btn btn-primary">Submit</button>
         </form>
       </div>
     );
