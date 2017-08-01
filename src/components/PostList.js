@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 
 class PostList extends Component {
   constructor(props) {
@@ -19,6 +19,17 @@ class PostList extends Component {
   }
 
   render() {
+    //  <Route
+    //   path='/postlist/:postID'
+    //
+    //   render={ ({match}) => {
+    //     const blogs = blogs.find((blog) =>{
+    //       return blog._id === match.params.id
+    //     })
+    //     return <ShowPost key={blog._id} name={blog.name} title={blog.title} blog={blog.blog}/>
+    //   }}
+    // />
+    console.log('logging match', this.match);
     return (
       <div>
         {this.state.posts.map((entries) => {

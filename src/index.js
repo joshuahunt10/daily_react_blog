@@ -18,7 +18,16 @@ ReactDOM.render(
     <Switch>
       <Route path='/createpost' component={CreatePost} />
 
-      <Route path='/postlist/:postID' component={ShowPost} />
+      {/* <Route
+        path='/postlist/:postID'
+
+        render={ ({match}) => {
+          const blogs = blogs.find((blog) =>{
+            return blog._id === match.params.id
+          })
+          return <ShowPost key={blog._id} name={blog.name} title={blog.title} blog={blog.blog}/>
+        }}
+      /> */}
 
       <Route path='/postlist' component={PostList} />
       <Route path='/' component={Splash} />

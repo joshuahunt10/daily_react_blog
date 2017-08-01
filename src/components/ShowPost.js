@@ -4,7 +4,12 @@ class ShowPost extends Component {
 
   render() {
     return (
-      <div>Show Post</div>
+      <div>
+
+        <h1>Show Post</h1>
+        <h3>{this.props.title}</h3>
+
+      </div>
     );
   }
 
